@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me - Sanskar Bhardwaj</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        #scene-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .poem {
+            text-align: center;
+            margin: 50px 0;
+            font-size: 1.2em;
+        }
+
+        .dialogue-box {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .dialogue-box.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #home {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .glitch {
+            font-size: 4em;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            animation: glitch 1s linear infinite;
+        }
+
+        @keyframes glitch {
+
+            2%,
+            64% {
+                transform: translate(2px, 0) skew(0deg);
+            }
+
+            4%,
+            60% {
+                transform: translate(-2px, 0) skew(0deg);
+            }
+
+            62% {
+                transform: translate(0, 0) skew(5deg);
+            }
+        }
+
+        .subtitle {
+            font-size: 1.5em;
+            margin: 20px 0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="scene-container"></div>
+
+    <section id="home">
+        <div class="container">
+            <h1 class="glitch" data-text="Sanskar Bhardwaj">Sanskar Bhardwaj</h1>
+            <p class="subtitle">B.Tech IT Student | Intermediate Programmer</p>
+            <a href="contact.html" class="cta-button">Get in Touch</a>
+        </div>
+    </section>
+
+    <div class="container">
+        <h1 class="section-title">About Me</h1>
+        <div class="poem">
+            <div class="dialogue-box">In the heart of IT, I find my way,<br>Each code I write, like a new day.<br>A
+                B.Tech student, in second year,<br>With passion and drive, I persevere.</div>
+            <div class="dialogue-box">Punctual and driven, tasks I embrace,<br>Complex challenges, I never
+                efface.<br>Persistent and curious, diving deep,<br>To solve problems, no matter how steep.</div>
+            <div class="dialogue-box">Technology's realm, I navigate,<br>Innovative solutions, I create.<br>Dedicated to
+                the path I tread,<br>With every line of code, dreams are fed.</div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.21/vanta.net.min.js"></script>
+    <script>
+        VANTA.NET({
+            el: "#scene-container",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            color: 0x3fff,
+            backgroundColor: 0x0
+        })
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const dialogueBoxes = document.querySelectorAll('.dialogue-box');
+            dialogueBoxes.forEach((box, index) => {
+                setTimeout(() => {
+                    box.classList.add('visible');
+                }, index * 1000);
+            });
+        });
+    </script>
+</body>
+
+</html>
